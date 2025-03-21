@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Model {
     private final Banco banco = new Banco();
-    private Cliente clienteAtuenticacao;
     private ArrayList<Observer> observers = new ArrayList<>();
 
     public Model() {}
@@ -13,6 +12,8 @@ public class Model {
     public String getNomeBanco() {
         return banco.getNomeBanco();
     }
+
+
 
     public void notifica(){
         for(Observer o : observers){
