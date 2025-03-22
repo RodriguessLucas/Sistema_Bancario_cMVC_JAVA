@@ -7,13 +7,13 @@ import java.util.Scanner;
 
 public class TelaInicialView implements Observer {
     private Model model;
-    private TelaInicialViewController controller;
+    private TelaInicialViewController telaIncialController;
     private boolean finalizar = false;
 
     public void initMainView(Model model) {
         this.model = model;
-        controller = new TelaInicialViewController();
-        // controller.initiMainViewController(model, this);
+        telaIncialController = new TelaInicialViewController();
+        telaIncialController.initTelaInicialViewController(model, this);
         model.attachObserver (this);
         menuPrincipal();
     }
@@ -32,19 +32,20 @@ public class TelaInicialView implements Observer {
             }
             System.out.println("Digite a opção desejada:");
             String entrada = scanner.nextLine();
-            // linha do controller
-            //
+            telaIncialController.handleEvent(entrada);
         }
         while (!finalizar);
         scanner.close();
-
-
-
-
     }
 
     public void finalizar() {
         finalizar = true;
+    }
+
+    public void ebixirMsg(String msg) {
+        System.out.println();
+        System.out.println(msg);
+        System.out.println();
     }
 
 

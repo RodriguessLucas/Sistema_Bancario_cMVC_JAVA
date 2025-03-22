@@ -13,6 +13,13 @@ public class Model {
         return banco.getNomeBanco();
     }
 
+    public boolean validarCpf(String cpf) {
+        return cpf.matches("[0-9]{10}");
+    }
+
+    public boolean validarSenha(String senha) {
+        return senha.matches("[0-9]{6}");
+    }
 
 
     public void notifica(){
