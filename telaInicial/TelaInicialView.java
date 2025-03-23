@@ -50,7 +50,6 @@ public class TelaInicialView implements Observer {
 
 
     public void update() {
-        System.out.println("Quantidade observadores: "+ model.countObservers());
     }
 
 }

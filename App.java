@@ -6,7 +6,5 @@ public class App {
         Model model = new Model();
         TelaInicialView telaInicial = new TelaInicialView();
         telaInicial.initMainView(model);
-
-
     }
 }

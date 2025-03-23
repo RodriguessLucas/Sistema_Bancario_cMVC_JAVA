@@ -15,7 +15,7 @@ public class TelaLoginView implements Observer {
     public void initTelaLoginView(Model model) {
         this.model = model;
         telaLoginController = new TelaLoginViewController();
-        // controller
+        telaLoginController.initTelaLoginViewController(model, this);
         model.attachObserver(this);
         logarUsuario();
 
@@ -39,12 +39,15 @@ public class TelaLoginView implements Observer {
             cpf = sc.nextLine();
             System.out.print("Senha: ");
             senha = sc.nextLine();
-            telaLoginController.handleEvent();
+
+
+            if(telaLoginController.validarLogin()){
+                valido = true;
+                telaLoginController.handleEvent();
+                model.detachObserver(this);
+            }
 
         }while(!valido);
-
-        //handleEvent
-        //remove a tela de login view do observadores
         sc.close();
 
     }

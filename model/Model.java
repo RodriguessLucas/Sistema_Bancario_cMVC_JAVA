@@ -14,12 +14,23 @@ public class Model {
     }
 
     public boolean validarCpf(String cpf) {
-        return cpf.matches("[0-9]{10}");
+        return cpf.matches("[0-9]{11}");
     }
 
     public boolean validarSenha(String senha) {
         return senha.matches("[0-9]{6}");
     }
+
+    public boolean validarCliente(String cpf, String senha) {
+        Cliente aux = banco.getCliente(cpf,senha);
+        return aux != null;
+    }
+
+    public Cliente getCliente(String cpf, String senha) {
+        return banco.getCliente(cpf,senha);
+    }
+
+
 
 
     public void notifica(){
