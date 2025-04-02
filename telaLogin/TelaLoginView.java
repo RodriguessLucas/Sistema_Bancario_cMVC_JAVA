@@ -1,9 +1,9 @@
 package telaLogin;
 
+import model.Entrada;
 import model.Model;
 import model.Observer;
 
-import java.util.Scanner;
 
 public class TelaLoginView implements Observer {
     private Model model;
@@ -29,16 +29,15 @@ public class TelaLoginView implements Observer {
     }
 
     public void logarUsuario() {
-        Scanner sc = new Scanner(System.in);
         boolean valido = false;
         do{
             System.out.println("======================");
             System.out.println("TELA DE LOGIN");
             System.out.println("======================");
             System.out.print("CPF: ");
-            cpf = sc.nextLine();
+            cpf = Entrada.lerString();
             System.out.print("Senha: ");
-            senha = sc.nextLine();
+            senha = Entrada.lerString();
 
 
             if(telaLoginController.validarLogin()){
@@ -48,7 +47,6 @@ public class TelaLoginView implements Observer {
             }
 
         }while(!valido);
-        sc.close();
 
     }
 

@@ -2,6 +2,7 @@ package telaInicial;
 
 import model.Model;
 import model.Observer;
+import telaCadastro.TelaCadastroView;
 import telaLogin.TelaLoginView;
 
 
@@ -23,6 +24,8 @@ public class TelaInicialViewController implements Observer {
 
                 break;
             case "2":
+                TelaCadastroView telaCadastroView = new TelaCadastroView();
+                telaCadastroView.initTelaCadastroView(model);
                 break;
 
             case "3":

@@ -13,6 +13,22 @@ public class Model {
         return banco.getNomeBanco();
     }
 
+    public String validarNome(String nome) {
+        if(nome == null ||nome.isEmpty()){
+            return "O nome não pode ser nulo! Tente novamente!";
+        }
+        if(nome.length()<4){
+            return "Digite seu nome completo!";
+        }
+        if(nome.length()>100){
+            return "Nome muito grande! Digite somente nome e sobrenome (Máx: 100 caracteres)";
+        }
+        if(nome.contains("[0-9]")){
+            return "Digite seu nome sem números!";
+        }
+        return "OK";
+    }
+
     public boolean validarCpf(String cpf) {
         return cpf.matches("[0-9]{11}");
     }
@@ -26,12 +42,32 @@ public class Model {
         return aux != null;
     }
 
+    public String validarLogin(String cpf, String senha) {
+        if(cpf.isEmpty()){
+            return "CPF vazio! Tente novamente!";
+        }
+        if(senha.isEmpty()){
+            return "Senha vazia! Tente novamente!";
+        }
+
+        if(!validarCpf(cpf)){
+            return "CPF inválido! Tente novamente!";
+        }
+
+        if(!validarSenha(senha)){
+            return "Senha inválida! Tente novamente!";
+        }
+
+        if(!validarCliente(cpf, senha)){
+            return "Cliente não existe no banco!";
+        }
+
+        return "OK";
+    }
+
     public Cliente getCliente(String cpf, String senha) {
         return banco.getCliente(cpf,senha);
     }
-
-
-
 
     public void notifica(){
         for(Observer o : observers){
@@ -52,10 +88,6 @@ public class Model {
     public int countObservers(){
         return observers.size();
     }
-
-
-
-
 
 
 }

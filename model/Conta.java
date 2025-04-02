@@ -1,14 +1,18 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Conta {
     private Cliente cliente;
     private double saldo;
     private boolean ativa;
+    private Extrato extrato;
 
     public Conta(Cliente cliente, double saldo, boolean ativa) {
         this.cliente = cliente;
         this.saldo = saldo;
         this.ativa = ativa;
+        this.extrato = new Extrato();
     }
 
     public Cliente getCliente() {
@@ -37,6 +41,13 @@ public class Conta {
     }
     public void sacar(double valor) {
         this.saldo -= valor;
+    }
+
+    public void AdicionarExtrato(Extrato extrato) {
+        this.extrato.add(extrato);
+    }
+    public ArrayList<Extrato> getExtrato() {
+        return extrato;
     }
 
     public void transferir(double valor, Conta destino) {

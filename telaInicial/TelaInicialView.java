@@ -1,9 +1,8 @@
 package telaInicial;
 
+import model.Entrada;
 import model.Model;
 import model.Observer;
-
-import java.util.Scanner;
 
 public class TelaInicialView implements Observer {
     private Model model;
@@ -19,7 +18,6 @@ public class TelaInicialView implements Observer {
     }
 
     public void menuPrincipal() {
-        Scanner scanner = new Scanner(System.in);
         String opcoes[] = {"[1] - FAZER LOGIN", "[2] - FAZER CADASTRO", "[3] - SAIR"};
 
         do{
@@ -31,16 +29,16 @@ public class TelaInicialView implements Observer {
                 System.out.println(opcao);
             }
             System.out.println("Digite a opção desejada:");
-            String entrada = scanner.nextLine();
+            String entrada = Entrada.lerString();
             telaIncialController.handleEvent(entrada);
         }
         while (!finalizar);
-        scanner.close();
     }
 
     public void finalizar() {
         finalizar = true;
     }
+
 
     public void ebixirMsg(String msg) {
         System.out.println();

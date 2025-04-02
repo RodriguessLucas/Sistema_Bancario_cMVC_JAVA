@@ -22,7 +22,6 @@ public class TelaCadastroViewController implements Observer {
         System.out.println("TelaCadastroViewController handleEvent voltando para tela inicial!");
 
     }
-
     public boolean validarNome() {
         String resultado = model.validarNome(telaCadastroView.getNome());
         if(!resultado.equals("OK")){

@@ -14,30 +14,12 @@ public class TelaLoginViewController implements Observer {
     }
 
     public boolean validarLogin() {
-        if(telaLoginView.getCpf() == null){
-            telaLoginView.ebixirMsg("CPF vazio! Tente novamente!");
-            return false;
-        }
-        if(telaLoginView.getSenha() == null){
-            telaLoginView.ebixirMsg("Senha vazia! Tente novamente!");
-            return false;
-        }
+        String resultado = model.validarLogin(telaLoginView.getCpf(), telaLoginView.getSenha());
 
-        if(!model.validarCpf(telaLoginView.getCpf())){
-            telaLoginView.ebixirMsg(("CPF inválido! Tente novamente!"));
+        if (!resultado.equals("OK")) {
+            telaLoginView.ebixirMsg(resultado);
             return false;
         }
-
-        if(!model.validarSenha(telaLoginView.getSenha())){
-            telaLoginView.ebixirMsg("Senha inválida! Tente novamente!");
-            return false;
-        }
-
-        if(!model.validarCliente(telaLoginView.getCpf(), telaLoginView.getSenha())){
-            telaLoginView.ebixirMsg("Cliente não existe no banco!");
-            return false;
-        }
-
         return true;
     }
 
