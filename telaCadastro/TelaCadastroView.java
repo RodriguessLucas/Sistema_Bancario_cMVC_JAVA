@@ -9,6 +9,7 @@ public class TelaCadastroView implements Observer {
     private TelaCadastroViewController telaCadastroViewController;
     private boolean finalizar;
     private boolean contaCriada;
+    private boolean criarConta;
     private String nome,cpf,senha;
 
     public void initTelaCadastroView(Model model) {
@@ -28,10 +29,12 @@ public class TelaCadastroView implements Observer {
     public String getSenha() {
         return senha;
     }
+    public boolean getCriarConta() { return criarConta;}
 
 
 
     public void iniciarCadastro(){
+
         while(!finalizar){
             apresentarCadastro();
 
@@ -44,9 +47,12 @@ public class TelaCadastroView implements Observer {
                 receberCPFeSenha();
             }
             while(!telaCadastroViewController.validarCadastro());
+
+
         }
 
         if(!contaCriada){
+            criarConta = criarConta();
             telaCadastroViewController.handleEvent();
             System.out.println("Cadastrando no banco!");
             System.out.println("Finalizando cadastro...");
@@ -75,6 +81,23 @@ public class TelaCadastroView implements Observer {
         cpf = Entrada.lerString();
         System.out.print("Digite sua SENHA: \nExemplo: 123456 \nSenha: ");
         senha = Entrada.lerString();
+    }
+
+    public boolean criarConta(){
+        String entrada;
+        while(true){
+            System.out.println("Gostaria de criar a conta corrente? [S/N]");
+            entrada = Entrada.lerString();
+            if(entrada.equals("s") || entrada.equals("S")){
+                return true;
+            }
+            else if(entrada.equals("n") || entrada.equals("N")){
+                return false;
+            }
+            else{
+                System.out.println("Digite SOMENTE [S/N]");
+            }
+        }
     }
 
     public void finalizar(){

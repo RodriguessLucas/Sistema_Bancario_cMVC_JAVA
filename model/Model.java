@@ -65,6 +65,18 @@ public class Model {
         return "OK";
     }
 
+    public void cadastrarCliente(String nome, String cpf, String senha) {
+        Cliente novo = new Cliente(nome,senha, cpf);
+        banco.adicionaCliente(novo);
+
+    }
+    public void cadastrarConta(String cpf, String senha){
+        Cliente aux = banco.getCliente(cpf,senha);
+        Conta nova = new Conta(aux,0,true);
+        aux.setConta(nova);
+
+    }
+
     public Cliente getCliente(String cpf, String senha) {
         return banco.getCliente(cpf,senha);
     }
@@ -84,9 +96,6 @@ public class Model {
         if(o!=null){
             observers.remove(o);
         }
-    }
-    public int countObservers(){
-        return observers.size();
     }
 
 

@@ -16,12 +16,20 @@ public class TelaCadastroViewController implements Observer {
 
 
     public void handleEvent() {
-        System.out.println("Conta criada com sucesso");
-        System.out.println("TelaCadastroViewController handleEvent");
+        model.cadastrarCliente(telaCadastroView.getNome(), telaCadastroView.getCpf(), telaCadastroView.getSenha());
+
+        if(telaCadastroView.getCriarConta()) {
+            model.cadastrarConta(telaCadastroView.getCpf(), telaCadastroView.getSenha());
+        }
+
+
+        telaCadastroView.ebixirMsg("Conta criada com sucesso");
+        telaCadastroView.ebixirMsg("Dados de Login: \nCPF: "+ telaCadastroView.getCpf()+" \nSenha: "+ telaCadastroView.getSenha() );
+        telaCadastroView.ebixirMsg("Voltando para tela inicial.");
         model.detachObserver(this);
-        System.out.println("TelaCadastroViewController handleEvent voltando para tela inicial!");
 
     }
+
     public boolean validarNome() {
         String resultado = model.validarNome(telaCadastroView.getNome());
         if(!resultado.equals("OK")){

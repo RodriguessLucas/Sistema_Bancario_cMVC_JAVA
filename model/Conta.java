@@ -1,12 +1,10 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Conta {
     private Cliente cliente;
     private double saldo;
     private boolean ativa;
-    private Extrato extrato;
+    private final Extrato extrato;
 
     public Conta(Cliente cliente, double saldo, boolean ativa) {
         this.cliente = cliente;
@@ -43,10 +41,7 @@ public class Conta {
         this.saldo -= valor;
     }
 
-    public void AdicionarExtrato(Extrato extrato) {
-        this.extrato.add(extrato);
-    }
-    public ArrayList<Extrato> getExtrato() {
+    public Extrato getExtrato() {
         return extrato;
     }
 

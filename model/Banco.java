@@ -16,7 +16,7 @@ public class Banco {
 
     public void adicionaCliente(Cliente cliente) {
         if(!clientes.containsKey(cliente.getNome())) {
-            clientes.put(cliente.getNome(), cliente);
+            clientes.put(cliente.getCpf(), cliente);
         }
     }
 
@@ -40,11 +40,6 @@ public class Banco {
         }
         return null;
     }
-
-
-
-
-
 
 
 
