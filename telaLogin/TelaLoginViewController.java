@@ -24,7 +24,7 @@ public class TelaLoginViewController implements Observer {
     }
 
     public void handleEvent() {
-        System.out.println("Chegou no handleEvent na TelaLoginViewController poha!");
+        System.out.println("Chegou no handleEvent na TelaClienteLogadoViewController poha!");
         //continuar aqui
         // é o handle event para fazer o login na conta bancária
     }
