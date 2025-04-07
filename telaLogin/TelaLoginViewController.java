@@ -25,23 +25,12 @@ public class TelaLoginViewController implements Observer {
     }
 
     public void handleEvent() {
+        telaLoginView.ebixirMsg("Carregando cliente!.....");
         model.logarCliente(telaLoginView.getCpf(), telaLoginView.getSenha());
         TelaClienteLogadoView telaClienteLogadoView = new TelaClienteLogadoView();
         telaClienteLogadoView.initTelaCadastroView(model);
-
-        System.out.println("indo para tela de cliente");
-
-
-
-
-        //continuar aqui
-        // é o handle event para fazer o login na conta bancária
     }
-
-
 
     @Override
-    public void update() {
-
-    }
+    public void update() {}
 }
