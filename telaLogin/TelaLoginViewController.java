@@ -2,6 +2,7 @@ package telaLogin;
 
 import model.Model;
 import model.Observer;
+import telaCliente.TelaClienteLogadoView;
 
 public class TelaLoginViewController implements Observer {
     private Model model;
@@ -24,7 +25,15 @@ public class TelaLoginViewController implements Observer {
     }
 
     public void handleEvent() {
-        System.out.println("Chegou no handleEvent na TelaClienteLogadoViewController poha!");
+        model.logarCliente(telaLoginView.getCpf(), telaLoginView.getSenha());
+        TelaClienteLogadoView telaClienteLogadoView = new TelaClienteLogadoView();
+        telaClienteLogadoView.initTelaCadastroView(model);
+
+        System.out.println("indo para tela de cliente");
+
+
+
+
         //continuar aqui
         // é o handle event para fazer o login na conta bancária
     }

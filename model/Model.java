@@ -6,11 +6,17 @@ public class Model {
     private final Banco banco = new Banco();
     private ArrayList<Observer> observers = new ArrayList<>();
 
+    private Cliente clienteAtivo;
+
     public Model() {}
 
 
     public String getNomeBanco() {
         return banco.getNomeBanco();
+    }
+
+    public Cliente getClienteAtivo() {
+        return clienteAtivo;
     }
 
     public String validarNome(String nome) {
@@ -68,18 +74,35 @@ public class Model {
     public void cadastrarCliente(String nome, String cpf, String senha) {
         Cliente novo = new Cliente(nome,senha, cpf);
         banco.adicionaCliente(novo);
+        notifica();
 
     }
     public void cadastrarConta(String cpf, String senha){
         Cliente aux = banco.getCliente(cpf,senha);
         Conta nova = new Conta(aux,0,true);
         aux.setConta(nova);
+        notifica();
 
     }
 
     public Cliente getCliente(String cpf, String senha) {
         return banco.getCliente(cpf,senha);
     }
+
+    public void logarCliente(String cpf, String senha) {
+        clienteAtivo = getCliente(cpf, senha);
+    }
+
+    public String getNomeClienteAtivo(){
+        return clienteAtivo.getNome();
+    }
+
+    public double getSaldoClienteAtivo(){
+        return clienteAtivo.getConta().getSaldo();
+    }
+
+
+
 
     public void notifica(){
         for(Observer o : observers){
