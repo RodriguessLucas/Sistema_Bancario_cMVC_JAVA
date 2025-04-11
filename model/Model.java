@@ -18,6 +18,9 @@ public class Model {
     public Cliente getClienteAtivo() {
         return clienteAtivo;
     }
+    public Conta getContaClienteAtivo(){
+        return clienteAtivo.getConta();
+    }
 
     public String validarNome(String nome) {
         if(nome == null ||nome.isEmpty()){
@@ -101,7 +104,44 @@ public class Model {
         return clienteAtivo.getConta().getSaldo();
     }
 
+    public void deslogarCliente(){
+        clienteAtivo = null;
+    }
 
+    public String imprimirExtrato(){
+        ArrayList<Transacao> aux = clienteAtivo.getConta().getExtrato().getExtrato();
+        if(aux.isEmpty()){
+            return "-----------------------------\n"
+                    +"Não houve movimentações!\n"
+                    +"-----------------------------\n";
+        }
+
+        String resposta = "";
+        resposta += "////////////////////////////////////////\n"
+                + "Extrato:\n"
+                + "-----------------------------\n";
+        for(Transacao transacao : aux){
+            if(transacao.getTipo().equals("SAQUE")){
+                resposta+= "Operacao: SAQUE\n"
+                        + "Valor : R$ " + transacao.getValor() + "\n"
+                        +"-----------------------------\n";
+            }
+            else if(transacao.getTipo().equals("DEPOSITO")){
+                resposta+= "Operacao: DEPOSITO\n"
+                        + "Valor : R$ " + transacao.getValor() + "\n"
+                        + "-----------------------------\n";
+            }
+            else if(transacao.getTipo().equals("TRANSFERENCIA")){
+                resposta+= "Operacao: TRANSFERENCIA\n"
+                        + "Valor : R$ " + transacao.getValor() + "\n"
+                        +"Conta Fonte: " + transacao.getFonte().getCliente().getCpf() + "\n"
+                        +"Conta Destino: "+ transacao.getDestino().getCliente().getCpf() + "\n"
+                        + "-----------------------------\n";;
+            }
+        }
+        return resposta;
+
+    }
 
 
     public void notifica(){
