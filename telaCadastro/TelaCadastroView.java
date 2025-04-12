@@ -54,8 +54,7 @@ public class TelaCadastroView implements Observer {
         if(!contaCriada){
             criarConta = criarConta();
             telaCadastroViewController.handleEvent();
-            System.out.println("Cadastrando no banco!");
-            System.out.println("Finalizando cadastro...");
+            update();
             // exibir as informações novamente
         }
 
@@ -112,6 +111,7 @@ public class TelaCadastroView implements Observer {
 
     @Override
     public void update() {
-
+        System.out.println("Cadastrando no banco!");
+        System.out.println("Finalizando cadastro...");
     }
 }
