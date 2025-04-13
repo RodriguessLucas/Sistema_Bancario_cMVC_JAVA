@@ -13,6 +13,7 @@ public class TelaInicialViewController implements Observer {
     public void initTelaInicialViewController(Model model, TelaInicialView view) {
         this.model = model;
         this.telaInicialView = view;
+        model.attachObserver(this);
     }
 
     public void handleEvent(String event) {

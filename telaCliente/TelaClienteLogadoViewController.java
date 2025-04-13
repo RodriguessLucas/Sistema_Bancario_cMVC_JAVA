@@ -43,6 +43,7 @@ public class TelaClienteLogadoViewController implements Observer {
 
     public void handleEvent(String event) {
 
+
         switch (event) {
             case "1":
                 if(model.getClienteAtivo().getConta() == null){
@@ -56,7 +57,7 @@ public class TelaClienteLogadoViewController implements Observer {
 
             case "2":
                 if(model.getContaClienteAtivo() == null){
-                    break; // aqui é para ser o não
+                    break; // aqui é para caso a conta do cliente esteja inativa e continuar nesse estado
                 }
                 TelaDepositoView telaDepositoView = new TelaDepositoView();
                 telaDepositoView.initTelaDepositoView(model);
@@ -86,8 +87,8 @@ public class TelaClienteLogadoViewController implements Observer {
 
             case "0":
                 model.deslogarCliente();
-                model.detachObserver(this);
                 telaClienteLogadoView.finalizar();
+                model.detachObserver(this);
                 System.out.println("finalizado irá para tela de login" );
                 break;
 
@@ -97,7 +98,6 @@ public class TelaClienteLogadoViewController implements Observer {
         }
 
     }
-
 
     @Override
     public void update() {

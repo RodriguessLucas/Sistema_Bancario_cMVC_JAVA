@@ -39,7 +39,6 @@ public class TelaLoginView implements Observer {
             System.out.print("Senha: ");
             senha = Entrada.lerString();
 
-
             if(telaLoginController.validarLogin()){
                 valido = true;
                 telaLoginController.handleEvent();

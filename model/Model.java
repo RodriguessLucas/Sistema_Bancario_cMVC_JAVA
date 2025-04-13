@@ -18,6 +18,7 @@ public class Model {
     public Cliente getClienteAtivo() {
         return clienteAtivo;
     }
+
     public Conta getContaClienteAtivo(){
         return clienteAtivo.getConta();
     }
@@ -97,6 +98,10 @@ public class Model {
         clienteAtivo = getCliente(cpf, senha);
     }
 
+    public void deslogarCliente(){
+        clienteAtivo = null;
+    }
+
     public String getNomeClienteAtivo(){
         return clienteAtivo.getNome();
     }
@@ -105,9 +110,6 @@ public class Model {
         return clienteAtivo.getConta().getSaldo();
     }
 
-    public void deslogarCliente(){
-        clienteAtivo = null;
-    }
 
     public String imprimirExtrato(){
         ArrayList<Transacao> aux = clienteAtivo.getConta().getExtrato().getExtrato();
@@ -197,5 +199,13 @@ public class Model {
         }
     }
 
+    public void exibirObservacoes(){
+        System.out.println("/////////////////////////////////");
+        System.out.println("Apresentando os observacoes ativos");
+        for(Observer o : observers){
+            System.out.println(o.getClass().getName());
+        }
+        System.out.println("/////////////////////////////////");
+    }
 
 }

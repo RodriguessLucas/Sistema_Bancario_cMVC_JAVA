@@ -10,11 +10,11 @@ public class TelaClienteLogadoView implements Observer {
     private TelaClienteLogadoViewController telaClienteLogadoViewController;
     private boolean finalizar;
 
-    public void initTelaCadastroView(Model model) {
+    public void initTelaClienteLogadoView(Model model) {
         this.model = model;
+        model.attachObserver(this);
         telaClienteLogadoViewController = new TelaClienteLogadoViewController();
         telaClienteLogadoViewController.initTelaClienteLogadoViewController(model, this);
-        model.attachObserver(this);
 
     }
 

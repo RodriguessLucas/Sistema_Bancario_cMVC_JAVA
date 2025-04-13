@@ -28,7 +28,9 @@ public class TelaLoginViewController implements Observer {
         telaLoginView.ebixirMsg("Carregando cliente!.....");
         model.logarCliente(telaLoginView.getCpf(), telaLoginView.getSenha());
         TelaClienteLogadoView telaClienteLogadoView = new TelaClienteLogadoView();
-        telaClienteLogadoView.initTelaCadastroView(model);
+        telaClienteLogadoView.initTelaClienteLogadoView(model);
+        model.detachObserver(this);
+
     }
 
     @Override

@@ -55,7 +55,6 @@ public class TelaCadastroView implements Observer {
             criarConta = criarConta();
             telaCadastroViewController.handleEvent();
             update();
-            // exibir as informações novamente
         }
 
         model.detachObserver(this);

@@ -21,13 +21,7 @@ public class TelaCadastroViewController implements Observer {
         if(telaCadastroView.getCriarConta()) {
             model.cadastrarConta(telaCadastroView.getCpf(), telaCadastroView.getSenha());
         }
-
-
-        telaCadastroView.ebixirMsg("Conta criada com sucesso");
-        telaCadastroView.ebixirMsg("Dados de Login: \nCPF: "+ telaCadastroView.getCpf()+" \nSenha: "+ telaCadastroView.getSenha() );
-        telaCadastroView.ebixirMsg("Voltando para tela inicial.");
         model.detachObserver(this);
-
     }
 
     public boolean validarNome() {
