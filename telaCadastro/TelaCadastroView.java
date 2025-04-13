@@ -112,6 +112,10 @@ public class TelaCadastroView implements Observer {
     @Override
     public void update() {
         System.out.println("Cadastrando no banco!");
+        System.out.println("Conta criada com sucesso");
+        System.out.println("Dados de Login: \nCPF: "+ cpf+" \nSenha: "+ senha);
         System.out.println("Finalizando cadastro...");
+        System.out.println("Voltando para tela inicial.");
+
     }
 }

@@ -2,6 +2,7 @@ package telaCliente;
 
 import model.Model;
 import model.Observer;
+import telaDeposito.TelaDepositoView;
 
 public class TelaClienteLogadoViewController implements Observer {
     private Model model;
@@ -10,6 +11,7 @@ public class TelaClienteLogadoViewController implements Observer {
     public void initTelaClienteLogadoViewController(Model model, TelaClienteLogadoView loginView) {
         this.model = model;
         this.telaClienteLogadoView = loginView;
+        model.attachObserver(this);
         carregarDadosCliente();
 
     }
@@ -56,9 +58,9 @@ public class TelaClienteLogadoViewController implements Observer {
                 if(model.getContaClienteAtivo() == null){
                     break; // aqui é para ser o não
                 }
-
-                //criação da tela e controller para deposito
-                System.out.println("fazendo deposito");
+                TelaDepositoView telaDepositoView = new TelaDepositoView();
+                telaDepositoView.initTelaDepositoView(model);
+                telaClienteLogadoView.update();
                 break;
 
             case "3":
@@ -99,6 +101,5 @@ public class TelaClienteLogadoViewController implements Observer {
 
     @Override
     public void update() {
-
     }
 }

@@ -40,6 +40,6 @@ public class TelaClienteLogadoView implements Observer {
 
     @Override
     public void update() {
-
+        telaClienteLogadoViewController.carregarDadosCliente();
     }
 }

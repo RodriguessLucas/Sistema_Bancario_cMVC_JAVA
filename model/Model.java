@@ -22,6 +22,7 @@ public class Model {
         return clienteAtivo.getConta();
     }
 
+
     public String validarNome(String nome) {
         if(nome == null ||nome.isEmpty()){
             return "O nome não pode ser nulo! Tente novamente!";
@@ -142,6 +143,41 @@ public class Model {
         return resposta;
 
     }
+
+    public void adicionarExtrato(String operacao, double valor, Conta origem, Conta destino) {
+        switch(operacao){
+            case "SAQUE":
+                break;
+
+            case "DEPOSITO":
+                clienteAtivo.getConta().getExtrato().registrarDeposito(valor, clienteAtivo.getConta());
+                break;
+
+            case "TRANSFERENCIA":
+                break;
+
+                default:
+                    break;
+        }
+
+    }
+
+
+    public String validarDeposito(double valor){
+        if(valor <= 0){
+            return "Erro: não pode depositar R$0 ou valores negativos!";
+        }
+        return "OK";
+    }
+
+    public void depositar(Double valor){
+        double montante = clienteAtivo.getConta().getSaldo() + valor;
+        clienteAtivo.getConta().setSaldo(montante);
+    }
+
+
+
+
 
 
     public void notifica(){
