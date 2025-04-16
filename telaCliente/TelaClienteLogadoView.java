@@ -7,14 +7,14 @@ import model.Observer;
 
 public class TelaClienteLogadoView implements Observer {
     private Model model;
-    private TelaClienteLogadoViewController telaClienteLogadoViewController;
+    private TelaClienteLogadoController telaClienteLogadoController;
     private boolean finalizar;
 
     public void initTelaClienteLogadoView(Model model) {
         this.model = model;
         model.attachObserver(this);
-        telaClienteLogadoViewController = new TelaClienteLogadoViewController();
-        telaClienteLogadoViewController.initTelaClienteLogadoViewController(model, this);
+        telaClienteLogadoController = new TelaClienteLogadoController();
+        telaClienteLogadoController.initTelaClienteLogadoViewController(model, this);
 
     }
 
@@ -22,7 +22,7 @@ public class TelaClienteLogadoView implements Observer {
         while(!finalizar){
             System.out.print(msg);
             String entrada = Entrada.lerString();
-            telaClienteLogadoViewController.handleEvent(entrada);
+            telaClienteLogadoController.handleEvent(entrada);
         }
     }
 
@@ -40,6 +40,6 @@ public class TelaClienteLogadoView implements Observer {
 
     @Override
     public void update() {
-        telaClienteLogadoViewController.carregarDadosCliente();
+        telaClienteLogadoController.carregarDadosCliente();
     }
 }

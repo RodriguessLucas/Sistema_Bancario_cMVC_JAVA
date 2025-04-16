@@ -7,14 +7,14 @@ import model.Observer;
 
 public class TelaLoginView implements Observer {
     private Model model;
-    private TelaLoginViewController telaLoginController;
+    private TelaLoginController telaLoginController;
     private String cpf;
     private String senha;
 
 
     public void initTelaLoginView(Model model) {
         this.model = model;
-        telaLoginController = new TelaLoginViewController();
+        telaLoginController = new TelaLoginController();
         telaLoginController.initTelaLoginViewController(model, this);
         model.attachObserver(this);
         logarUsuario();

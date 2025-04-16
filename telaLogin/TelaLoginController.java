@@ -4,7 +4,7 @@ import model.Model;
 import model.Observer;
 import telaCliente.TelaClienteLogadoView;
 
-public class TelaLoginViewController implements Observer {
+public class TelaLoginController implements Observer {
     private Model model;
     private TelaLoginView telaLoginView;
 

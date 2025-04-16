@@ -6,7 +6,7 @@ import telaCadastro.TelaCadastroView;
 import telaLogin.TelaLoginView;
 
 
-public class TelaInicialViewController implements Observer {
+public class TelaInicialController implements Observer {
     private Model model;
     private TelaInicialView telaInicialView;
 

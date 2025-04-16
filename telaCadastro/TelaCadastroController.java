@@ -4,7 +4,7 @@ import model.Model;
 import model.Observer;
 
 
-public class TelaCadastroViewController implements Observer {
+public class TelaCadastroController implements Observer {
     private Model model;
     private TelaCadastroView telaCadastroView;
 

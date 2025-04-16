@@ -3,8 +3,9 @@ package telaCliente;
 import model.Model;
 import model.Observer;
 import telaDeposito.TelaDepositoView;
+import telaSaque.TelaSaqueView;
 
-public class TelaClienteLogadoViewController implements Observer {
+public class TelaClienteLogadoController implements Observer {
     private Model model;
     private TelaClienteLogadoView telaClienteLogadoView;
 
@@ -45,20 +46,25 @@ public class TelaClienteLogadoViewController implements Observer {
 
 
         switch (event) {
-            case "1":
+            case "1": // SAQUE ou CRIAR CONTA CORRENTE
                 if(model.getClienteAtivo().getConta() == null){
                     // aqui criará uma conta ativa para o cliente
                     break;
                 }
-                //sacar
-                // criação da tela e controller para saques
-                System.out.println("fazendo saque");
+
+                // SACAR
+                TelaSaqueView telaSaqueView = new TelaSaqueView();
+                telaSaqueView.initTelaSaqueview(model);
+                telaClienteLogadoView.update();
+
                 break;
 
-            case "2":
+            case "2":// DEPOSITO OU NEGAR CRIAR CONTA CORRENTE
                 if(model.getContaClienteAtivo() == null){
                     break; // aqui é para caso a conta do cliente esteja inativa e continuar nesse estado
                 }
+
+                //DEPOSITAR
                 TelaDepositoView telaDepositoView = new TelaDepositoView();
                 telaDepositoView.initTelaDepositoView(model);
                 telaClienteLogadoView.update();
@@ -74,14 +80,14 @@ public class TelaClienteLogadoViewController implements Observer {
                 telaClienteLogadoView.exibirMsg(model.imprimirExtrato());
                 break;
 
-            case "4":
+            case "4":// TRANSFERENCIA OU NEGAR TRANSFERIR
                 if(model.getContaClienteAtivo() == null){
                     telaClienteLogadoView.exibirMsg("Opção inválida! Tente novamente!");
                     break;
                 }
+                //TRANSFERENCIA ENTRE CONTAS
 
                 // criação de tela e controller para transferencia entre contas
-
                 System.out.println("fazendo transferencia");
                 break;
 

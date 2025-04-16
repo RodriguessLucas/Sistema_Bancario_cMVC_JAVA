@@ -3,7 +3,7 @@ package telaDeposito;
 import model.Model;
 import model.Observer;
 
-public class TelaDepositoViewController implements Observer {
+public class TelaDepositoController implements Observer {
     private Model model;
     private TelaDepositoView telaDepositoView;
 

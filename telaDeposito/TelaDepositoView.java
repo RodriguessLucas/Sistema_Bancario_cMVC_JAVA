@@ -7,15 +7,15 @@ import model.Observer;
 
 public class TelaDepositoView implements Observer {
     private Model model;
-    private TelaDepositoViewController telaDepositoViewController;
+    private TelaDepositoController telaDepositoController;
     private double valor;
 
     public double getValor(){return valor;}
 
     public void initTelaDepositoView(Model model) {
         this.model = model;
-        telaDepositoViewController = new TelaDepositoViewController();
-        telaDepositoViewController.initTelaDepositoView(model, this);
+        telaDepositoController = new TelaDepositoController();
+        telaDepositoController.initTelaDepositoView(model, this);
         model.attachObserver(this);
         iniciarDeposito();
     }
@@ -27,11 +27,11 @@ public class TelaDepositoView implements Observer {
             System.out.println("Digite um valor para deposito");
             System.out.print("R$ ");
             valor = Entrada.lerDouble();
-            resposta = telaDepositoViewController.verificarValorDeposito(valor);
+            resposta = telaDepositoController.verificarValorDeposito(valor);
 
         }while(!resposta.equals("OK"));
 
-        telaDepositoViewController.handleEvent();
+        telaDepositoController.handleEvent();
 
     }
 

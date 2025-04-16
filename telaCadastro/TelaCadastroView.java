@@ -6,7 +6,7 @@ import model.Observer;
 
 public class TelaCadastroView implements Observer {
     private Model model;
-    private TelaCadastroViewController telaCadastroViewController;
+    private TelaCadastroController telaCadastroController;
     private boolean finalizar;
     private boolean contaCriada;
     private boolean criarConta;
@@ -14,8 +14,8 @@ public class TelaCadastroView implements Observer {
 
     public void initTelaCadastroView(Model model) {
         this.model = model;
-        telaCadastroViewController = new TelaCadastroViewController();
-        telaCadastroViewController.initTelaCadastroViewController(model,this);
+        telaCadastroController = new TelaCadastroController();
+        telaCadastroController.initTelaCadastroViewController(model,this);
         model.attachObserver(this);
         iniciarCadastro();
     }
@@ -41,19 +41,19 @@ public class TelaCadastroView implements Observer {
             do{
                 receberNome();
             }
-            while(!telaCadastroViewController.validarNome());
+            while(!telaCadastroController.validarNome());
 
             do{
                 receberCPFeSenha();
             }
-            while(!telaCadastroViewController.validarCadastro());
+            while(!telaCadastroController.validarCadastro());
 
 
         }
 
         if(!contaCriada){
             criarConta = criarConta();
-            telaCadastroViewController.handleEvent();
+            telaCadastroController.handleEvent();
             update();
         }
 

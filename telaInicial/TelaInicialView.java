@@ -6,12 +6,12 @@ import model.Observer;
 
 public class TelaInicialView implements Observer {
     private Model model;
-    private TelaInicialViewController telaIncialController;
+    private TelaInicialController telaIncialController;
     private boolean finalizar = false;
 
     public void initMainView(Model model) {
         this.model = model;
-        telaIncialController = new TelaInicialViewController();
+        telaIncialController = new TelaInicialController();
         telaIncialController.initTelaInicialViewController(model, this);
         model.attachObserver (this);
         menuPrincipal();

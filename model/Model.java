@@ -149,6 +149,7 @@ public class Model {
     public void adicionarExtrato(String operacao, double valor, Conta origem, Conta destino) {
         switch(operacao){
             case "SAQUE":
+                clienteAtivo.getConta().getExtrato().registrarSaque(valor, clienteAtivo.getConta());
                 break;
 
             case "DEPOSITO":
@@ -174,6 +175,21 @@ public class Model {
 
     public void depositar(Double valor){
         double montante = clienteAtivo.getConta().getSaldo() + valor;
+        clienteAtivo.getConta().setSaldo(montante);
+    }
+
+    public String validarSaque(double valor){
+        if(valor <= 0){
+            return "Erro: não pode sacar R$0 ou valores negativos!";
+        }
+        if(clienteAtivo.getConta().getSaldo() < valor){
+            return "Erro: saldo insuficiente para saque!";
+        }
+        return "OK";
+    }
+
+    public void sacar(double valor){
+        double montante = clienteAtivo.getConta().getSaldo() - valor;
         clienteAtivo.getConta().setSaldo(montante);
     }
 
