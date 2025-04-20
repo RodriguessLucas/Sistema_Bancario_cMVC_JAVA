@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Conta {
     private Cliente cliente;
     private double saldo;
@@ -41,10 +43,9 @@ public class Conta {
         this.saldo -= valor;
     }
 
-    public Extrato getExtrato() {
-        return extrato;
-    }
+    public ArrayList<Transacao> getExtratoLista() {return extrato.getExtrato();}
 
+    public Extrato getExtrato() {return extrato;}
 
     public void transferir(double valor, Conta destino) {
         this.saldo -= valor;

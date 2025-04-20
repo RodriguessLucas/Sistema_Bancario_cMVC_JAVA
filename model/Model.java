@@ -111,41 +111,6 @@ public class Model {
     }
 
 
-    public String imprimirExtrato(){
-        ArrayList<Transacao> aux = clienteAtivo.getConta().getExtrato().getExtrato();
-        if(aux.isEmpty()){
-            return "-----------------------------\n"
-                    +"Não houve movimentações!\n"
-                    +"-----------------------------\n";
-        }
-
-        String resposta = "";
-        resposta += "////////////////////////////////////////\n"
-                + "Extrato:\n"
-                + "-----------------------------\n";
-        for(Transacao transacao : aux){
-            if(transacao.getTipo().equals("SAQUE")){
-                resposta+= "Operacao: SAQUE\n"
-                        + "Valor : R$ " + transacao.getValor() + "\n"
-                        +"-----------------------------\n";
-            }
-            else if(transacao.getTipo().equals("DEPOSITO")){
-                resposta+= "Operacao: DEPOSITO\n"
-                        + "Valor : R$ " + transacao.getValor() + "\n"
-                        + "-----------------------------\n";
-            }
-            else if(transacao.getTipo().equals("TRANSFERENCIA")){
-                resposta+= "Operacao: TRANSFERENCIA\n"
-                        + "Valor : R$ " + transacao.getValor() + "\n"
-                        +"Conta Fonte: " + transacao.getFonte().getCliente().getCpf() + "\n"
-                        +"Conta Destino: "+ transacao.getDestino().getCliente().getCpf() + "\n"
-                        + "-----------------------------\n";;
-            }
-        }
-        return resposta;
-
-    }
-
     public void adicionarExtrato(String operacao, double valor, Conta origem, Conta destino) {
         switch(operacao){
             case "SAQUE":
@@ -193,7 +158,38 @@ public class Model {
         clienteAtivo.getConta().setSaldo(montante);
     }
 
+    public String carregarExtrato(String operacao){
+        ArrayList<Transacao> aux = clienteAtivo.getConta().getExtratoLista();
+        String resposta = "";
 
+        if(aux.isEmpty()){
+            return "-----------------------------\n"
+                    +"Não houve movimentações!\n"
+                    +"-----------------------------\n";
+        }
+
+        if(operacao.equals("TODOS")){
+            for(Transacao transacao : aux){
+                resposta += transacao.toString();
+            }
+        }
+
+        if(!operacao.equals("TODOS")) {
+            for (Transacao transacao : aux) {
+                if (transacao.getTipo().equals(operacao)) {
+                    resposta += transacao.toString();
+                }
+            }
+        }
+
+        if(resposta.isEmpty()){
+            return "-----------------------------\n"
+                    +"Não houve movimentações!\n"
+                    +"-----------------------------\n";
+        }
+
+        return resposta;
+    }
 
 
 

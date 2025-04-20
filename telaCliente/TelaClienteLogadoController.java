@@ -1,5 +1,6 @@
 package telaCliente;
 
+import TelaExtrato.TelaExtratoView;
 import model.Model;
 import model.Observer;
 import telaDeposito.TelaDepositoView;
@@ -13,7 +14,7 @@ public class TelaClienteLogadoController implements Observer {
         this.model = model;
         this.telaClienteLogadoView = loginView;
         model.attachObserver(this);
-        carregarDadosCliente();
+
 
     }
 
@@ -76,8 +77,10 @@ public class TelaClienteLogadoController implements Observer {
                     break;
                 }
 
-                //criação de tela e controller para extratos
-                telaClienteLogadoView.exibirMsg(model.imprimirExtrato());
+                //EXTRATO DA CONTA
+                TelaExtratoView telaExtratoView = new TelaExtratoView();
+                telaExtratoView.initTelaExtratoView(model);
+
                 break;
 
             case "4":// TRANSFERENCIA OU NEGAR TRANSFERIR
@@ -85,10 +88,8 @@ public class TelaClienteLogadoController implements Observer {
                     telaClienteLogadoView.exibirMsg("Opção inválida! Tente novamente!");
                     break;
                 }
-                //TRANSFERENCIA ENTRE CONTAS
+                System.out.println("Fazendo transferencia entre contas");
 
-                // criação de tela e controller para transferencia entre contas
-                System.out.println("fazendo transferencia");
                 break;
 
             case "0":

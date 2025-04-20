@@ -52,6 +52,30 @@ public class Transacao {
         this.destino = destino;
     }
 
+    @Override
+    public String toString() {
+        if(tipo.equals("DEPOSITO")){
+            return "Operação: DEPOSITO\n"
+                    + "Valor: R$"+valor+"\n";
+        }
+
+        if(tipo.equals("TRANSACAO")){
+            return "Operação: TRANSACAO\n"
+                    + "Valor: R$"+valor+"\n"
+                    + "Conta de envio: " + fonte.getCliente().getNome() + "   "
+                    + "CPF: " + fonte.getCliente().getCpf() + "\n"
+                    + "Conta remetente: " + destino.getCliente().getNome() + "   "
+                    + "CPF: " + destino.getCliente().getCpf() + "\n";
+        }
+
+        if(tipo.equals("SAQUE")){
+            return "Operação: SAQUE\n"
+                    + "Valor: R$"+valor+"\n";
+        }
+        
+        return null;
+    }
+
 
 
 

@@ -15,7 +15,7 @@ public class TelaClienteLogadoView implements Observer {
         model.attachObserver(this);
         telaClienteLogadoController = new TelaClienteLogadoController();
         telaClienteLogadoController.initTelaClienteLogadoViewController(model, this);
-
+        telaClienteLogadoController.carregarDadosCliente();
     }
 
     public void telaCliente(String msg){
