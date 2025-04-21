@@ -5,6 +5,7 @@ import model.Model;
 import model.Observer;
 import telaDeposito.TelaDepositoView;
 import telaSaque.TelaSaqueView;
+import telaTransferancia.TelaTransferenciaView;
 
 public class TelaClienteLogadoController implements Observer {
     private Model model;
@@ -88,7 +89,9 @@ public class TelaClienteLogadoController implements Observer {
                     telaClienteLogadoView.exibirMsg("Opção inválida! Tente novamente!");
                     break;
                 }
-                System.out.println("Fazendo transferencia entre contas");
+
+                TelaTransferenciaView telaTransferenciaView = new TelaTransferenciaView();
+                telaTransferenciaView.initTelaTransferenciaView(model);
 
                 break;
 

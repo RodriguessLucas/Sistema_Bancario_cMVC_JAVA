@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Model {
     private final Banco banco = new Banco();
-    private ArrayList<Observer> observers = new ArrayList<>();
+    private final ArrayList<Observer> observers = new ArrayList<>();
 
     private Cliente clienteAtivo;
 
@@ -90,9 +90,18 @@ public class Model {
 
     }
 
+    public boolean existeCliente(String cpf){
+        return  banco.existeCliente(cpf);
+    }
+
     public Cliente getCliente(String cpf, String senha) {
         return banco.getCliente(cpf,senha);
     }
+
+    public Cliente getCliente(String cpf) {return banco.getCliente(cpf);};
+
+    public boolean existeContaCliente(String cpf){ return banco.getCliente(cpf).getConta() != null;}
+
 
     public void logarCliente(String cpf, String senha) {
         clienteAtivo = getCliente(cpf, senha);
@@ -111,7 +120,7 @@ public class Model {
     }
 
 
-    public void adicionarExtrato(String operacao, double valor, Conta origem, Conta destino) {
+    public void adicionarExtrato(String operacao, double valor, Conta origem, Cliente destino) {
         switch(operacao){
             case "SAQUE":
                 clienteAtivo.getConta().getExtrato().registrarSaque(valor, clienteAtivo.getConta());
@@ -122,6 +131,8 @@ public class Model {
                 break;
 
             case "TRANSFERENCIA":
+                clienteAtivo.getConta().getExtrato().registrarTransferencia(valor,origem,destino.getConta());
+                destino.getConta().getExtrato().registrarTransferencia(valor,origem,destino.getConta());
                 break;
 
                 default:
@@ -129,7 +140,6 @@ public class Model {
         }
 
     }
-
 
     public String validarDeposito(double valor){
         if(valor <= 0){
@@ -156,6 +166,10 @@ public class Model {
     public void sacar(double valor){
         double montante = clienteAtivo.getConta().getSaldo() - valor;
         clienteAtivo.getConta().setSaldo(montante);
+    }
+
+    public void transferir(double valor, Cliente origem, Cliente destino){
+        origem.getConta().transferir(valor, destino.getConta());
     }
 
     public String carregarExtrato(String operacao){

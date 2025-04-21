@@ -30,6 +30,12 @@ public class Banco {
         return clientes.containsKey(cliente.getCpf());
     }
 
+    public boolean existeCliente(String cpf) { return clientes.containsKey(cpf); }
+
+    public Cliente getCliente(String cpf) {
+        return clientes.get(cpf);
+    }
+
     public Cliente getCliente(String cpf, String senha) {
         Cliente aux = clientes.get(cpf);
         if(aux == null) {
