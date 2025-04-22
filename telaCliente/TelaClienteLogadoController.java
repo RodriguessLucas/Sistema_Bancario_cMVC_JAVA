@@ -92,6 +92,7 @@ public class TelaClienteLogadoController implements Observer {
 
                 TelaTransferenciaView telaTransferenciaView = new TelaTransferenciaView();
                 telaTransferenciaView.initTelaTransferenciaView(model);
+                telaClienteLogadoView.update();
 
                 break;
 
@@ -104,6 +105,7 @@ public class TelaClienteLogadoController implements Observer {
 
             default:
                 telaClienteLogadoView.exibirMsg("Opção inválida! Tente novamente!");
+                System.out.println("Passou no default de telaClienteLogadoController");
                 break;
         }
 

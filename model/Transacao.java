@@ -59,8 +59,8 @@ public class Transacao {
                     + "Valor: R$"+valor+"\n";
         }
 
-        if(tipo.equals("TRANSACAO")){
-            return "Operação: TRANSACAO\n"
+        if(tipo.equals("TRANSFERENCIA")){
+            return "Operação: TRANSFERENCIA\n"
                     + "Valor: R$"+valor+"\n"
                     + "Conta de envio: " + fonte.getCliente().getNome() + "   "
                     + "CPF: " + fonte.getCliente().getCpf() + "\n"

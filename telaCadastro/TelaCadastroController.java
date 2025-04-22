@@ -21,6 +21,7 @@ public class TelaCadastroController implements Observer {
         if(telaCadastroView.getCriarConta()) {
             model.cadastrarConta(telaCadastroView.getCpf(), telaCadastroView.getSenha());
         }
+        model.exibirObservacoes();
         model.detachObserver(this);
     }
 

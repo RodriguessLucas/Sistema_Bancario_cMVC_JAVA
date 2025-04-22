@@ -79,14 +79,14 @@ public class Model {
     public void cadastrarCliente(String nome, String cpf, String senha) {
         Cliente novo = new Cliente(nome,senha, cpf);
         banco.adicionaCliente(novo);
-        notifica();
+        //notifica();
 
     }
     public void cadastrarConta(String cpf, String senha){
         Cliente aux = banco.getCliente(cpf,senha);
         Conta nova = new Conta(aux,0,true);
         aux.setConta(nova);
-        notifica();
+        //notifica();
 
     }
 

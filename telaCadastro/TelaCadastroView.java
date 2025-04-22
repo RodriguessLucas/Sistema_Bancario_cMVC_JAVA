@@ -58,7 +58,6 @@ public class TelaCadastroView implements Observer {
         }
 
         model.detachObserver(this);
-        System.out.println("Voltando para tela inicial....");
 
     }
 

@@ -25,12 +25,14 @@ public class TelaInicialController implements Observer {
 
                 break;
             case "2":
+                model.exibirObservacoes();
                 TelaCadastroView telaCadastroView = new TelaCadastroView();
                 telaCadastroView.initTelaCadastroView(model);
                 break;
 
             case "3":
                 telaInicialView.finalizar();
+                model.detachObserver(this);
                 break;
 
             default:

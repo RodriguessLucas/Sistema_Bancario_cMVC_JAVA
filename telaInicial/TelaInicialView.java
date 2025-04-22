@@ -37,6 +37,7 @@ public class TelaInicialView implements Observer {
 
     public void finalizar() {
         finalizar = true;
+        model.detachObserver(this);
     }
 
 
